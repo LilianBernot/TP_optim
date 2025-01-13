@@ -44,10 +44,8 @@ void transfo(int w, int h, unsigned char *src, unsigned char *lut, unsigned char
 	int i,j;
 	unsigned char current;
 
-  	for (i = 0; i < w; i++) {
-  		for (j = 0; j < h; j++) {
-  			current = lut[src[j * w + i]];
-			src[j * w + i] = (((int) current + val) > 255) ? 255 : current + val;
-  		}
+	for (i = 0; i < (h*w + 1); i++) {
+		current = lut[src[i]];
+		src[i] = (((int) current + val) > 255) ? 255 : current + val;
   	}
 }
