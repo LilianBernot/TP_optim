@@ -28,4 +28,5 @@ The optimizations have been done in this order :
 - changed double loops to 1 : instead or reading with i being width and j being height, we directly go with k going from 0 to width*height. 
 - changed read and write : replace fread/fwrite calls for single bytes with block reads and writes. These reduce the number of system calls. 
 - Loop up : use block read instead of byte by byte.
+- Btter malloc : improve how they are given.
 

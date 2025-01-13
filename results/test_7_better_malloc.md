@@ -1,0 +1,11 @@
+35482689.000000 clock cycles.
+32220001.000000 clock cycles.
+104330458.000000 clock cycles.
+29210076.000000 clock cycles.
+18735392.000000 clock cycles.
+23167085.000000 clock cycles.
+28245275.000000 clock cycles.
+7880692.000000 clock cycles.
+14415349.000000 clock cycles.
+15772027.000000 clock cycles.
+TOTAL: 309459044.000000 clock cycles.
