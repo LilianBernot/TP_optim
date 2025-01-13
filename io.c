@@ -137,7 +137,7 @@ double transform_image(char *source, char *curve, int light, char *dest)
 #else
 	start_counter();
 #endif
-	transfo (width, height, source_image, dest_image, lut, light);
+	transfo (width, height, source_image, lut, light);
 #ifdef USE_CLOCK
 	stop = clock();
 	t = stop - start;
@@ -146,11 +146,10 @@ double transform_image(char *source, char *curve, int light, char *dest)
 	t = get_counter();
 	printf("%f clock cycles.\n", t);
 #endif
-	write_image(dest, dest_image, size, width, height, maxval);
+	write_image(dest, source_image, size, width, height, maxval);
 
 	free(source_image);
 	free(lut);
-	free(dest_image);
 
 	return t;
 }
