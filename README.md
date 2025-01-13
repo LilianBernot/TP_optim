@@ -29,4 +29,5 @@ The optimizations have been done in this order :
 - changed read and write : replace fread/fwrite calls for single bytes with block reads and writes. These reduce the number of system calls. 
 - Loop up : use block read instead of byte by byte.
 - Btter malloc : improve how they are given.
+- Parallelization : the transfo loop is parallelized with OMP.
 

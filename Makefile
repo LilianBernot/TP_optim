@@ -1,6 +1,6 @@
 CFLAGS = -O3
 transform_image: io.o transfo.o cycles.o
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@ $^ $(CFLAGS) -fopenmp
 io.o: transfo.h cycles.h
 
 # Variables
