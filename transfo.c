@@ -38,6 +38,16 @@ void curve(int w, int h, unsigned char *img, unsigned char *lut)
 void transfo(int w, int h, unsigned char *src, unsigned char *lut, unsigned char val)
 {
   	// copy(w, h, src, dest);
-  	curve(w, h, src, lut);
-  	light(w, h, src, val);
+  	// curve(w, h, src, lut);
+  	// light(w, h, src, val);
+
+	int i,j;
+	unsigned char current;
+
+  	for (i = 0; i < w; i++) {
+  		for (j = 0; j < h; j++) {
+  			current = lut[src[j * w + i]];
+			src[j * w + i] = (((int) current + val) > 255) ? 255 : current + val;
+  		}
+  	}
 }
