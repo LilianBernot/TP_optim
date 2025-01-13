@@ -22,37 +22,25 @@ void read_look_up_table(FILE *map, unsigned char *lut)
 
 void read_image(FILE *in, unsigned char *source_image, long size)
 {
-	long i;
 	fseek(in, 1, SEEK_CUR);
-	for (i = 0; i < size; i++) {
-		if (fread(source_image + i, 1, 1, in) == 0) {
-			perror("fread");
-			exit(1);
-		}
-	}
+    if (fread(source_image, 1, size, in) != size) {
+        perror("fread");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void write_image(char *dest, unsigned char *img, long size, int width, int height, int maxval)
-{
-	FILE *out;
-	long i;
-
-	out = fopen(dest, "w");
-	if (out == NULL)
-	{
-		perror(dest);
-		exit(EXIT_FAILURE);
-	}
-	fprintf(out, "P5\n");
-	fprintf(out, "%d %d\n", height, width);
-	fprintf(out, "%d\n", maxval);
-	for (i = 0; i < size; i ++) {
-		if (fwrite (img + i, 1, 1, out) == EOF) {
-			perror ("fwrite");
-			exit (1);
-		}
-	}
-	fclose (out);
+{	FILE *out = fopen(dest, "w");
+    if (out == NULL) {
+        perror(dest);
+        exit(EXIT_FAILURE);
+    }
+    fprintf(out, "P5\n%d %d\n%d\n", height, width, maxval);
+    if (fwrite(img, 1, size, out) != size) {
+        perror("fwrite");
+        exit(EXIT_FAILURE);
+    }
+    fclose(out);
 }
 
 #ifdef USE_CLOCK
