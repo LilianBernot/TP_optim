@@ -92,15 +92,13 @@ double transform_image(char *source, char *curve, int light, char *dest)
 		exit(EXIT_FAILURE);
 	}
 
-	fscanf(in, "%c", &c1);
-	fscanf(in, "%c", &c2);
+	fscanf(in, "%c %c", &c1, &c2);
 	if (c1 != 'P' || c2 != '5') {
 		fprintf(stderr, "Error, input file is not PGM\n");
 		exit(EXIT_FAILURE);
 	}
 
-	fscanf (in, "%d %d", &height, &width);
-	fscanf (in, "%d", &maxval);
+	fscanf (in, "%d %d %d", &height, &width, &maxval);
 
 	if (maxval > 255) {
 		fprintf(stderr, "Input file is not a 8 bits gray image.\n");

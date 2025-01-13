@@ -3,4 +3,3 @@ transform_image
 data/
 cmake-build-debug
 .vscode
-results/
