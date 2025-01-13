@@ -12,12 +12,10 @@
 
 void read_look_up_table(FILE *map, unsigned char *lut)
 {
-	int n = 0;
-	unsigned char val;
-	while (fread(&val, 1, 1, map) != 0) {
-		lut[n] = val;
-		n++;
-	}
+	if (fread(lut, 1, 256, map) != 256) {
+        perror("Error reading look-up table");
+        exit(EXIT_FAILURE);
+    }
 }
 
 void read_image(FILE *in, unsigned char *source_image, long size)

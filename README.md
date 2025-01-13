@@ -27,4 +27,5 @@ The optimizations have been done in this order :
 - fuse light and curve : both functions do loops on the image which can be done in only one.
 - changed double loops to 1 : instead or reading with i being width and j being height, we directly go with k going from 0 to width*height. 
 - changed read and write : replace fread/fwrite calls for single bytes with block reads and writes. These reduce the number of system calls. 
+- Loop up : use block read instead of byte by byte.
 
